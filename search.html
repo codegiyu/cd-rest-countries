@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Search - World Countries</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="img/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="img/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="img/favicon-16x16.png">
+    <link rel="manifest" href="site.webmanifest">
+</head>
+<body>
+    <header>
+        <nav class="container d-flex justify-content-between align-items-center py-4">
+            <a href="index.html" class="text-decoration-none"><h1 class="h4 fw-800 m-0">Where in the world?</h1></a>
+            <div id="switch" class="switch">
+                <div id="light" class="light">
+                    <span class="text-dark"><i class="bi bi-moon-fill"></i></span>
+                    <p class="d-none d-md-block fw-600 ms-2 m-0">Dark mode</p>
+                </div>
+                <div id="dark" class="dark hide">
+                    <span class="text-white "><i class="bi bi-moon-fill"></i></span>
+                    <p class="d-none d-md-block fw-600 ms-2 m-0">Light mode</p>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <section>
+        <div class="container d-flex flex-column flex-md-row justify-content-between align-items-start align-items-md-center py-4 py-lg-5">
+            <form class="search position-relative mb-4 mb-md-0 rounded" method="post">
+                <div class="form-wrap w-100 d-flex rounded">
+                    <button type="submit" id="search-btn" class="w-auto px-3 py-3" onclick="search(event)" aria-label="search button"><i class="bi bi-search"></i></button>
+                    <input type="text" id="search-input" class="py-3 px-3" placeholder="Search for a country...">
+                </div>
+                <p class="search-warning position-absolute start-0 fw-600 opacity-9 start-0 mb-0 p-0 mt-1 ms-3 hide">NB: Search term can only be a single word (a-z only)</p>
+            </form>
+            <div class="dropdown fs-small rounded">
+                <div id="dropdown-btn" class="w-100 d-flex justify-content-between rounded px-4 py-3">
+                    <p class="dropdown-btn-text fw-600 m-0 m-0">Filter by Continents</p>
+                    <span class="dropdown-btn-span"><i class="bi bi-chevron-down m-0"></i></span>
+                </div>
+                <div id="dropdown-box" class="w-100 rounded py-2 px-3 hide">
+                    <ul class="fs-small m-0 p-0">
+                        <li class="border-0 dropdown-item m-0 p-0 pb-1" onclick="filterAll()">
+                            <p id="all" class="m-0">All</p>
+                        </li>
+                        <li class="border-0 dropdown-item m-0 p-0 pb-1" onclick="filterAfrica()">
+                            <p id="africa" class="m-0">Africa</p>
+                        </li>
+                        <li class="border-0 dropdown-item m-0 p-0 pb-1" onclick="filterAsia()">
+                            <p id="asia" class="m-0">Asia</p>
+                        </li>
+                        <li class="border-0 dropdown-item m-0 p-0 pb-1" onclick="filterNAmerica()">
+                            <p id="nAmerica" class="m-0">North America</p>
+                        </li>
+                        <li class="border-0 dropdown-item m-0 p-0 pb-1" onclick="filterSAmerica()">
+                            <p id="sAmerica" class="m-0">South America</p>
+                        </li>
+                        <li class="border-0 dropdown-item m-0 p-0 pb-1" onclick="filterEurope()">
+                            <p id="europe" class="m-0">Europe</p>
+                        </li>
+                        <li class="border-0 dropdown-item m-0 p-0 pb-1" onclick="filterOceania()">
+                            <p id="oceania" class="m-0">Oceania</p>
+                        </li>
+                        <li class="border-0 dropdown-item m-0 p-0 pb-1" onclick="filterAntarctica()">
+                            <p id="antarctica" class="m-0">Antarctica</p>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <main role="main">
+        <div class="container position-relative pb-5 pt-4 pt-lg-0">
+            <div id="loading-screen" class="loading-screen position-absolute align-items-center justify-content-center hide">
+                <img src="img/loading-23.gif" alt="loading..." >
+            </div>
+            <h2 class="fw-600 h4 mb-5 p-0">Search results for "<span class="search-term"></span>" (<span class="results-number"></span>)</h2>
+            <div id="countries" class="m-0 p-0">
+                
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="js/search.js"></script>
+</body>
+</html>

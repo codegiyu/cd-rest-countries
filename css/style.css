@@ -1,0 +1,355 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;400;600;800&display=swap');
+
+:root {
+    --dmElements: hsl(209, 23%, 22%);
+    --dmBackground: hsl(207, 26%, 17%);
+    --lmText: hsl(200, 15%, 8%);
+    --lmInput: hsl(0, 0%, 52%);
+    --lmBackground: hsl(0, 0%, 98%);
+    --lmElements: hsl(0, 0%, 100%);
+    --dmText: hsl(0, 0%, 100%);
+}
+
+.fw-300 {
+    font-weight: 300;
+}
+
+.fw-400 {
+    font-weight: 400;
+}
+
+.fw-600 {
+    font-weight: 600;
+}
+
+.fw-800 {
+    font-weight: 800;
+}
+
+.fs-small {
+    font-size: 0.75rem;
+}
+
+.opacity-9 {
+    opacity: 0.85
+}
+
+
+body {
+    background: var(--lmBackground);
+    color: var(--lmText);
+    font-family: 'Nunito Sans', sans-serif;
+    font-size: 0.825rem;
+    font-weight: 300;
+}
+
+body.dark-mode {
+    background: var(--dmBackground);
+    color: var(--dmText);
+}
+
+header {
+    background: var(--lmElements);
+    box-shadow: 0px 1px 1px 1px rgba(200, 200, 200, 0.25);
+}
+
+body.dark-mode header {
+    background: var(--dmElements);
+    box-shadow: 0px 0px 5px 2px rgba(54, 54, 54, 0.25);
+}
+
+h1 {
+    color: var(--lmText);
+}
+
+body.dark-mode h1 {
+    color: var(--dmText);
+}
+
+.switch {
+    cursor: pointer;
+}
+
+.light,
+.dark {
+    display: flex;
+}
+
+.light.hide,
+.dark.hide {
+    display: none;
+}
+
+form {
+    width: 470px;
+}
+
+.form-wrap {
+    overflow: hidden;
+    box-shadow: 0px 0px 8px 2px rgba(200, 200, 200, 0.25);
+}
+
+body.dark-mode .form-wrap {
+    box-shadow: 0px 0px 8px 2px rgba(54, 54, 54, 0.25);
+}
+
+@media only screen and (max-width: 700.99px) {
+    form {
+        width: 300px;
+    }
+}
+
+@media only screen and (max-width: 575.99px) {
+    form {
+        width: 100%;
+    }
+}
+
+#search-btn {
+    width: auto;
+    background: hsl(0, 0%, 100%);
+    border: none;
+    outline: none;
+}
+
+#search-input {
+    width: 95%;
+    background: hsl(0, 0%, 100%);
+    border: none;
+    outline: none;
+}
+
+#search-input::placeholder {
+    font-size: 0.75rem;
+}
+
+.search-warning {
+    bottom: -20px;
+    font-size: 0.675rem;
+    display: block;
+}
+
+.search-warning.hide {
+    display: none;
+}
+
+body.dark-mode #search-btn,
+body.dark-mode #search-input {
+    background: var(--dmElements);
+    color: hsl(0, 0%, 100%);
+}
+
+body.dark-mode #search-input::placeholder {
+    color: hsl(0, 0%, 100%);
+    opacity: 0.85;
+}
+
+.dropdown {
+    width: 200px;
+    position: relative;
+    cursor: pointer;
+}
+
+.back {
+    outline: none;
+    border: none;
+    color: hsl(200, 15%, 8%);
+    background: hsl(0, 0%, 100%);
+    box-shadow: 0px 0px 8px 2px rgba(200, 200, 200, 0.25);
+}
+
+body.dark-mode .back {
+    background: var(--dmElements);
+    color: hsl(0, 0%, 100%);
+    box-shadow: 0px 0px 8px 2px rgba(0, 3, 22, 0.25);
+}
+
+#dropdown-btn {
+    background: hsl(0, 0%, 100%);
+    box-shadow: 0px 0px 8px 2px rgba(200, 200, 200, 0.25);
+}
+
+body.dark-mode #dropdown-btn {
+    box-shadow: 0px 0px 8px 2px rgba(54, 54, 54, 0.25);
+}
+
+#dropdown-box {
+    background: hsl(0, 0%, 100%);
+    position: absolute;
+    top: 55px;
+    left: 0;
+    z-index: 10;
+}
+
+#dropdown-box.hide {
+    display: none;
+}
+
+body.dark-mode #dropdown-btn,
+body.dark-mode #dropdown-box {
+    background: var(--dmElements);
+}
+
+body.dark-mode ul li p {
+    color: hsl(0, 0%, 100%);
+}
+
+ul {
+    list-style: none;
+}
+
+.loading-screen {
+    height: calc(100vh - 200px);
+    width: 100%;
+    top: -10px;
+    left: 0;
+    display: flex;
+    background: var(--lmBackground);
+    z-index: 8;
+}
+
+#loading-screen.hide {
+    display: none;
+    z-index: -1;
+}
+
+body.dark-mode .loading-screen {
+    background: var(--dmBackground);
+}
+
+.loading-screen img {
+    width: 400px;
+}
+
+#search-results-heading.hide {
+    display: none;
+}
+
+#countries {
+    width: 100%;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 80px;
+}
+
+#country {
+    width: 100%;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1.1fr 1fr;
+    gap: 100px;
+}
+
+.detail-columns {
+    width: 100%;
+    display: grid;
+    grid-template-rows: auto;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+}
+
+.bc {
+    outline: none;
+    border: none;
+    color: hsl(200, 15%, 8%);
+    background: hsl(0, 0%, 100%);
+    box-shadow: 0px 0px 8px 2px rgba(200, 200, 200, 0.25);
+}
+
+body.dark-mode .bc {
+    background: var(--dmElements);
+    color: hsl(0, 0%, 100%);
+    box-shadow: 0px 0px 4px 1px rgba(0, 3, 22, 0.25);
+}
+
+@media only screen and (max-width: 1199.99px) {
+    #countries {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 60px;
+    }
+}
+
+@media only screen and (max-width: 991.99px) {
+    #countries {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 60px;
+    }
+
+    #country {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+    .flag,
+    .details {
+        width: 70%;
+        margin-inline: auto;
+    }
+
+    .detail-columns {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+}
+
+@media only screen and (max-width: 575.99px) {
+    #countries {
+        grid-template-columns: 1fr;
+        gap: 50px;
+    }
+
+    .country-card {
+        width: 85%;
+        margin-inline: auto;
+    }
+
+    #country {
+        grid-template-columns: 1fr;
+        gap: 60px;
+    }
+
+    .flag,
+    .details {
+        width: 100%;
+        margin-inline: auto;
+    }
+
+    .detail-columns {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+}
+
+.country-card {
+    background: var(--lmElements);
+    overflow: hidden;
+    color: var(--lmText);
+    box-shadow: 0px 0px 8px 2px rgba(200, 200, 200, 0.25);
+}
+
+body.dark-mode .country-card {
+    background: var(--dmElements);
+    color: var(--dmText);
+    box-shadow: 0px 0px 4px 1px rgba(54, 54, 54, 0.25);
+}
+
+.borders {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 7rem 1fr;
+    grid-template-rows: auto;
+    gap: 5px;
+}
+
+@media only screen and (max-width: 991.99px) {
+    .borders {
+        grid-template-columns: 1fr;
+        grid-template-rows: auto auto;
+    }
+}
+
+.border-countries {
+    width: 100%;
+    gap: 3px;
+}
