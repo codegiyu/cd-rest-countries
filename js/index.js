@@ -1,8 +1,6 @@
-const body = document.querySelector("body");   // document.body
-const themeSwitch = document.getElementById("switch");
-const lightTheme = document.getElementById("light");
-const darkTheme = document.getElementById("dark");
+const body2 = document.querySelector("body");   // document.body
 const searchForm = document.querySelector("form.search");
+const dropdown = document.querySelector(".dropdown");
 const dropdownBtn = document.getElementById("dropdown-btn");
 const dropdownBox = document.getElementById("dropdown-box");
 const dropdownItems = document.querySelectorAll(".dropdown-item");
@@ -12,31 +10,68 @@ const searchTerm = document.getElementById("search-term");
 const resultsNumber = document.getElementById("results-number");
 const countriesDisplay = document.getElementById("countries");
 
+let allCountries = [];
+
 
 window.onload = () => {
-    // console.log(window)
     fetchCountries();
 }
 
-dropdownBtn.addEventListener("click", fetchCountries);
+dropdownBtn.addEventListener("click", toggleFilterOptions);
+body2.addEventListener('click', (e) => {
+    if (!dropdownBox.classList.contains('hide')) {
+        if (!dropdown.contains(e.target)) {
+            toggleFilterOptions()
+        }
+    }
+})
+
+dropdownItems.forEach(item => {
+    item.addEventListener('click', filterCountries)
+})
+
+function filterCountries(e) {
+    const option = e.currentTarget.getAttribute("data-option");
+    let filteredCountries = [];
+
+    if (option !== 'all') {
+        filteredCountries = allCountries.filter(country => country.continent[0] === option);
+    } else {
+        filteredCountries = [...allCountries];
+    }
+
+    console.log('filteredCountries')
+    loadingScreen.classList.remove("hide");
+    renderCountries(filteredCountries);
+    loadingScreen.classList.add("hide");
+
+    toggleFilterOptions();
+}
+
+function toggleFilterOptions() {
+    dropdownBox.classList.toggle('hide');
+}
 
 async function fetchCountries() {
     loadingScreen.classList.remove("hide");
 
     const response = await fetch("https://restcountries.com/v3.1/all");
     const countriesData = await response.json();
-
+    console.log(countriesData)
     const result = countriesData.map(item => {
         return {
             name: item.name.common,
             code: item.cca3,
             flag: item.flags.svg,
             population: item.population.toLocaleString(),
-            continent: item.region,
+            continent: item.continents,
             capital: item.capital
         }
     })
-    console.log(result)
+    result.sort((a, b) => a.name.localeCompare(b.name));
+    console.log(result);
+
+    allCountries = result;
     renderCountries(result);
 
     loadingScreen.classList.add("hide");
