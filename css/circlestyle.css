@@ -1,0 +1,196 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+main {
+    width: 100%;
+    height: 100vh;
+    display: grid;
+    place-items: center;
+}
+
+.circle {
+    aspect-ratio: 1;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+}
+
+.blue {
+    background: blue;
+}
+
+.white {
+    background: white;
+}
+
+.circle-1 {
+    --width: 300px;
+    width: var(--width);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 0px 0px 25px 5px #00000035;
+}
+
+.circle-2 {
+    width: 180px;
+    box-shadow: 0px 0px 25px 5px #00000035;
+    z-index: 5;
+}
+
+.circle-3 {
+    width: 130px;
+    box-shadow: 5px 0px 15px 2px #00000035;
+}
+
+.circle-4 {
+    width: 100px;
+
+    & #value {
+        text-align: center;
+        font-weight: 600;
+        color: blue;
+        font-size: 1.15rem;
+    }
+}
+
+.triangle {
+    border-top: calc(var(--width) / 2) solid white;
+    border-left: calc((var(--width) / 2) * 0.26794919243) solid transparent;
+    border-right: calc((var(--width) / 2) * 0.26794919243) solid transparent;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    --rotation: 30deg;
+    transform-origin: bottom center;
+    transform: translateX(-50%) rotate(calc(30deg * var(--index)));
+
+    &.blue-t {
+        border-top-color: blue;
+    }
+}
+
+.triangle-1 {
+    --index: 0;
+}
+
+.triangle-2 {
+    --index: 1;
+}
+
+.triangle-3 {
+    --index: 2;
+}
+
+.triangle-4 {
+    --index: 3;
+}
+
+.triangle-5 {
+    --index: 4;
+}
+
+.triangle-6 {
+    --index: 5;
+}
+
+.triangle-7 {
+    --index: 6;
+}
+
+.triangle-8 {
+    --index: 7;
+}
+
+.triangle-9 {
+    --index: 8;
+}
+
+.triangle-10 {
+    --index: 9;
+}
+
+.triangle-11 {
+    --index: 10;
+}
+
+.triangle-12 {
+    --index: 11;
+}
+
+.rectangle {
+    width: calc(var(--width) * 0.26794919243);
+    height: calc(var(--width) / 2);
+    background: transparent;
+    padding: 5px;
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform-origin: bottom center;
+    transform: translateX(-50%) rotate(calc(30deg * var(--index)));
+    z-index: 10;
+
+    & span {
+        font-size: 2.5rem;
+        font-weight: 900;
+        color: red;
+        text-align: center;
+        display: block;
+        transform-origin: center;
+        transform: rotate(calc(-30deg * var(--index)));
+    }
+}
+
+.rectangle-1 {
+    --index: 1;
+}
+
+.rectangle-2 {
+    --index: 3;
+}
+
+.rectangle-3 {
+    --index: 5;
+}
+
+.rectangle-4 {
+    --index: 7;
+}
+
+.rectangle-5 {
+    --index: 9;
+}
+
+.rectangle-6 {
+    --index: 11;
+}
+
+.test {
+    width: 200px;
+    display: none;
+    background: black;
+    position: relative;
+    box-shadow: 0px 0px 25px 5px #00000035;
+    /* overflow: hidden; */
+
+    &::after {
+        content: "";
+        border-top: 100px solid white;
+        border-left: calc(100px * 0.26794919243) solid transparent;
+        border-right: calc(100px * 0.26794919243) solid transparent;
+        position: absolute;
+        top: 0;
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    &::before {
+        content: attr(id);
+        color: white;
+        width: 2px;
+        height: 2px;
+        background: red;
+    }
+}
