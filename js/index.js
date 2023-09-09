@@ -34,13 +34,14 @@ function filterCountries(e) {
     const option = e.currentTarget.getAttribute("data-option");
     let filteredCountries = [];
 
-    if (option !== 'all') {
+    if (option !== 'All') {
         filteredCountries = allCountries.filter(country => country.continent[0] === option);
     } else {
         filteredCountries = [...allCountries];
     }
 
-    console.log('filteredCountries')
+    console.log('all countries: ', allCountries)
+    console.log('filteredCountries: ', filteredCountries)
     loadingScreen.classList.remove("hide");
     renderCountries(filteredCountries);
     loadingScreen.classList.add("hide");
@@ -80,7 +81,7 @@ async function fetchCountries() {
 function renderCountries(arr) {
     let countriesCard = "";
     arr.forEach(country => {
-        countriesCard += `<a href="country.html?state=${country.code}" class="text-decoration-none m-0 p-0">
+        countriesCard += `<a href="country.html?country=${country.code}" class="text-decoration-none m-0 p-0">
                     <div class="country-card rounded pb-3">
                         <div class="flag ratio ratio-16x9">
                             <img src="${country.flag}" alt="Flag of ${country.name}" class="img-fluid">
